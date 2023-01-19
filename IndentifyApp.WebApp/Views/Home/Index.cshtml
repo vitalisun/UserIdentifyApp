@@ -1,0 +1,39 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewBag.Title = "CreateUser";
+}
+
+<h2>Регистрация нового пользователя</h2>
+
+<div id="register-form">
+
+    <input v-model="login"
+           type="text"
+           placeholder="Логин" />
+    <br />
+    <input v-model="password"
+           type="text"
+           placeholder="Пароль" />
+    <br />
+
+    <input v-model="passwordConfirm"
+           type="text"
+           placeholder="Повторить пароль" />
+    <br />
+
+    <button v-on:click="register">Ok</button>
+
+    <div v-if="errors.length">
+        <div v-for="error in errors">
+            <div class="text-danger">{{error}}</div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/register.js"></script>
+}
+
+
+

@@ -1,0 +1,83 @@
+﻿@model IndexViewModel
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Пользователь @Model?.Login в системе. Необходимо заполнить данные профиля для идентификации.</h2>
+
+<div id="profile-form">
+    <!-- text -->
+    <input v-model="lastName"
+           type="text"
+           placeholder="Фамилия" />
+    <br />
+    <input v-model="firstName"
+           type="text"
+           placeholder="Имя" />
+    <br />
+    <input v-model="middleName"
+           type="text"
+           placeholder="Отчество" />
+    <br />
+    <input v-model="inn"
+           type="text"
+           placeholder="ИНН" />
+    <br />
+    <input v-model="passportSeries"
+           type="text"
+           placeholder="Серия паспорта" />
+    <br />
+    <input v-model="passportNumber"
+           type="text"
+           placeholder="Номер паспорта" />
+    <br />
+    <input v-model="phone"
+           type="text"
+           v-mask="'+7(###)-###-####'"
+           placeholder="Телефон" />
+    <br />
+    <input v-model="city"
+           type="text"
+           placeholder="Город" />
+    <br />
+    <input v-model="street"
+           type="text"
+           placeholder="Улица" />
+    <br />
+    <input v-model="house"
+           type="text"
+           placeholder="Дом" />
+    <br />
+    <input v-model="address"
+           type="text"
+           placeholder="Адрес"
+           :readonly="true" />
+    <br />
+    <p>
+        <select v-model="position">
+            <option>Директор</option>
+            <option>Бухгалтер</option>
+            <option>Доверенное лицо</option>
+        </select>
+        {{position}}
+    </p>
+    <br />
+
+    <div v-if="showProfileStatus">
+        <div>{{profileStatus}}</div>
+    </div>
+    <div v-else>
+        <button v-on:click="idetify">Ok</button>
+    </div>
+
+    <div v-if="errors.length">
+        <div v-for="error in errors">
+            <div class="text-danger">{{error}}</div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/profile.js"></script>
+}
